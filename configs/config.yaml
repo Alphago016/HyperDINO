@@ -1,0 +1,55 @@
+
+run_dataset: "Houston"
+seed: 42
+cuda_visible_devices: "0"
+omp_num_threads: 4
+
+repo_dir: "./dinov3-main"
+weight_path: "./dinov3-main/dinov3_vitl16_pretrain_sat493m-eadcf0ff.pth"
+
+patch_sizes: [13]
+
+batch_size: 128
+test_batch_size: 2048
+max_epochs: 200
+test_interval: 40
+lr: 2.0e-4
+weight_decay: 1.0e-4
+warmup_epochs: 15
+warmup_init_lr: 5.0e-6
+grad_clip_norm: 1.0
+label_smoothing: 0.1
+spectral_var_ratio: 0.995
+
+embed_mid_channels: [512, 768]
+
+sliding_overlap: 4
+
+save_dir: "./result"
+visualize_dir: "./visualization"
+
+datasets:
+  Houston:
+    image_mat_path: "./dataset/Houston/Houston.mat"
+    gt_mat_path: "./dataset/Houston/Houston_gt.mat"
+    train_samples_per_class: 20
+  PaviaU:
+    image_mat_path: "./dataset/PaviaU/PaviaU.mat"
+    gt_mat_path: "./dataset/PaviaU/PaviaU_gt.mat"
+    train_samples_per_class: 20
+  WHU-Hi-HanChuan:
+    image_mat_path: "./dataset/WHU-Hi-HanChuan/WHU_Hi_HanChuan.mat"
+    gt_mat_path: "./dataset/WHU-Hi-HanChuan/WHU_Hi_HanChuan_gt.mat"
+    train_samples_per_class: 20
+  WHU-Hi-LongKou:
+    image_mat_path: "./dataset/WHU-Hi-LongKou/WHU_Hi_LongKou.mat"
+    gt_mat_path: "./dataset/WHU-Hi-LongKou/WHU_Hi_LongKou_gt.mat"
+    train_samples_per_class: 20
+  Salinas:
+    image_mat_path: "./dataset/Salinas/Salinas.mat"
+    gt_mat_path: "./dataset/Salinas/Salinas_gt.mat"
+    train_samples_per_class: 20
+  KSC:
+    image_mat_path: "./dataset/KSC/KSC.mat"
+    gt_mat_path: "./dataset/KSC/KSC_gt.mat"
+    train_samples_per_class: 20
